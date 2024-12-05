@@ -92,9 +92,9 @@ Dice Roller 3D is a SwiftUI-based app with integrated SceneKit for a fully immer
 
 
 TODO:
-[] Swap models to 3d
-[] Add physics scene that rolls dice
-[] Allow dice to have their colors changed / set
-[] Add a tally so you know totals of each dice set, totals of all
-[] Add a screen that shows the dice rolls entirely and allows you to re-roll ones you pick
+- [] Swap models to 3d
+- [] Add physics scene that rolls dice
+- [] Allow dice to have their colors changed / set
+- [] Add a tally so you know totals of each dice set, totals of all
+- [] Add a screen that shows the dice rolls entirely and allows you to re-roll ones you pick
 
