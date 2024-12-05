@@ -11,7 +11,7 @@ import SceneKit
 
 // Custom shapes for each die type
 
-// Add D2
+// Add D2 (coin flip)
 //struct Circle: Shape {
 //    func path(in rect: CGRect) -> Path {
 //        Path { path in
@@ -63,16 +63,46 @@ struct Pentagon: Shape {
 
 struct Dodecagon: Shape {
     func path(in rect: CGRect) -> Path {
-        let inset = rect.width * 0.1
-        return Path { path in
-            let points = stride(from: 0.0, to: 360.0, by: 30.0).map {
-                CGPoint(
-                    x: rect.midX + (rect.width / 2 - inset) * CGFloat(cos($0 * .pi / 180)),
-                    y: rect.midY + (rect.height / 2 - inset) * CGFloat(sin($0 * .pi / 180))
+            let inset = rect.width * 0.1
+            let radius = (rect.width / 2 - inset)
+            let center = CGPoint(x: rect.midX, y: rect.midY)
+
+            var points: [CGPoint] = []
+            for angle in stride(from: 0.0, to: 360.0, by: 30.0) {
+                let radians = angle * .pi / 180
+                let point = CGPoint(
+                    x: center.x + radius * CGFloat(cos(radians)),
+                    y: center.y + radius * CGFloat(sin(radians))
                 )
+                points.append(point)
             }
-            path.addLines(points)
-            path.closeSubpath()
+
+            return Path { path in
+                path.addLines(points)
+                path.closeSubpath()
+            }
         }
+}
+
+// breaking out the function for dodecagon due to mathematical complexity causing compiler issues
+func path(in rect: CGRect) -> Path {
+    let inset = rect.width * 0.1
+    let radius = (rect.width / 2 - inset)
+    let center = CGPoint(x: rect.midX, y: rect.midY)
+
+    var points: [CGPoint] = []
+    for angle in stride(from: 0.0, to: 360.0, by: 30.0) {
+        let radians = angle * .pi / 180
+        let point = CGPoint(
+            x: center.x + radius * CGFloat(cos(radians)),
+            y: center.y + radius * CGFloat(sin(radians))
+        )
+        points.append(point)
+    }
+
+    return Path { path in
+        path.addLines(points)
+        path.closeSubpath()
     }
 }
+

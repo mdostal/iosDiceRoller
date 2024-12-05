@@ -46,15 +46,6 @@ struct MainBoardView: View {
                                             }
                                             .padding()
                                         }
-//                    HStack {
-//                        ForEach(diceSet.results, id: \.result) { die in
-//                            Text("\(die.result)")
-//                                .font(.largeTitle)
-//                                .padding()
-//                                .background(Circle().fill(Color.white))
-//                        }
-//                    }
-//                    .transition(.opacity)
                 }
 
                 // Roll button
