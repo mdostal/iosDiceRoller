@@ -14,10 +14,12 @@ struct ContentView: View {
 
     var body: some View {
         MainBoardView()
+
     }
 }
 
 #Preview {
+
     ContentView()
         .modelContainer(for: Item.self, inMemory: true)
 }

@@ -10,6 +10,8 @@ import SwiftData
 
 @main
 struct DiceRollingAppApp: App {
+    @StateObject private var appState = AppState() // Use @StateObject for the root instance
+
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Item.self,
@@ -26,7 +28,15 @@ struct DiceRollingAppApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(appState)
+
         }
         .modelContainer(sharedModelContainer)
+    }
+}
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(AppState()) // Inject the environment object
     }
 }
